@@ -1,0 +1,126 @@
+<section class="bg-success">
+  <div class="container py-4 vh-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-sm-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong border-light">
+          <div class="card-body p-5 text-center">
+            <a
+              [routerLink]="['']"
+              class="navbar-brand d-flex align-items-center justify-content-start"
+            >
+              <span class="text-danger lead font fw-bold">ZEEKART</span>
+            </a>
+            <h5 class="text-center fw-bold mt-3">SIGN UP</h5>
+
+            <form [formGroup]="signupForm">
+              <div class="form-outline mb-4">
+                <input
+                  type="name"
+                  class="form-control"
+                  formControlName="name"
+                  placeholder="Name"
+                />
+                <div
+                  class="mb-4"
+                  *ngIf="
+                    signupForm.get('name').invalid &&
+                    (signupForm.get('name').dirty ||
+                      signupForm.get('name').touched)
+                  "
+                >
+                  <p class="text-warning">*please provide a name</p>
+                </div>
+
+                <input
+                  type="email"
+                  class="form-control mt-4"
+                  formControlName="email"
+                  placeholder="Email"
+                />
+                <div
+                  class="mb-4"
+                  *ngIf="
+                    signupForm.get('email').invalid &&
+                    (signupForm.get('email').dirty ||
+                      signupForm.get('email').touched)
+                  "
+                >
+                  <p class="text-warning">*please provide an email</p>
+                </div>
+
+                <input
+                  type="password"
+                  class="form-control mt-4"
+                  formControlName="password"
+                  placeholder="password"
+                />
+
+                <div
+                  class="mb-4"
+                  *ngIf="
+                    signupForm.get('password').invalid &&
+                    (signupForm.get('password').dirty ||
+                      signupForm.get('password').touched)
+                  "
+                >
+                  <p class="text-warning">*password required</p>
+                </div>
+
+                <input
+                  type="password"
+                  class="form-control mt-4"
+                  formControlName="conpassword"
+                  placeholder="confirm password"
+                />
+
+                <span
+                  class="text-warning mt-2"
+                  *ngIf="f['conpassword'].getError('Mustmatch') != null"
+                  >*password mismatched</span
+                >
+              </div>
+              <div
+                class="d-flex align-item-center justify-content-between mt-2"
+              >
+                <div class="form-check mb-4">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    I agree all statements in Terms of service
+                  </label>
+                </div>
+              </div>
+              <!-- <button class="btn btn-color w-100" type="submit"> -->
+              <!-- <a [routerLink]="['/dashboard']" class="text-light">REGISTER</a> -->
+              <a
+                type="submit"
+                role="button"
+                (click)="onSubmit()"
+                class="btn btn-success w-100 text-light form-control"
+                >Register</a
+              >
+
+              <!-- </button> -->
+
+              <!-- <hr class="my-4" /> -->
+            </form>
+            <div class="text-start mt-3">
+              <p class="fs-6">
+                Already have an account?
+                <a
+                  [routerLink]="['/login']"
+                  class="text-decoration-none text-success"
+                  >Log in here!</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

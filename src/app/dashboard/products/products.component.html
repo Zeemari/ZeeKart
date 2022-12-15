@@ -1,0 +1,176 @@
+<!-- Add Product Modal -->
+<section class="bg-light">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-end">
+      <button
+        class="btn btn-success mt-2 me-3"
+        (click)="clickAddProduct()"
+        type="button"
+        data-bs-toggle="modal"
+        data-bs-target="#myModal"
+      >
+        New product +
+      </button>
+      <div class="modal fade" id="myModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title fs-4">Product details</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="myForm">
+                <div class="form-outline mb-4 mt-4">
+                  <input
+                    type="name"
+                    class="form-control"
+                    formControlName="name"
+                    placeholder="Product name"
+                  />
+                  <div
+                    class="mb-4"
+                    *ngIf="
+                      myForm.get('name').invalid &&
+                      (myForm.get('name').dirty || myForm.get('name').touched)
+                    "
+                  >
+                    <p class="text-warning">*please provide a product name</p>
+                  </div>
+
+                  <input
+                    type="number"
+                    class="form-control mt-4"
+                    formControlName="price"
+                    placeholder="Product price"
+                  />
+                  <div
+                    class=""
+                    *ngIf="
+                      myForm.get('price').invalid &&
+                      (myForm.get('price').dirty || myForm.get('price').touched)
+                    "
+                  >
+                    <p class="text-warning">*please provide a specific price</p>
+                  </div>
+
+                  <div class="row align-items-center">
+                    <div class="col-12 mb-4 mt-4">
+                      <textarea
+                        class="form-control"
+                        rows="4"
+                        formControlName="description"
+                        placeholder="Product description"
+                      ></textarea>
+                    </div>
+                  </div>
+
+                  <!-- Upload Image Section -->
+                  <div
+                    class="upload d-flex align-items-center justify-content-start"
+                  >
+                    <button type="button" class="btn btn-primary">
+                      <i class="fas fa-upload"></i> <span> Upload Image</span>
+                      <input type="file" />
+                    </button>
+                  </div>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-center">
+                  <a
+                    type="submit"
+                    *ngIf="showUpdate"
+                    (click)="updateProducts()"
+                    role="button"
+                    class="btn btn-success w-25 text-light mt-4 mb-2"
+                    >Update</a
+                  >
+
+                  <a
+                    type="submit"
+                    *ngIf="showAdd"
+                    (click)="addProduct()"
+                    role="button"
+                    class="btn btn-success w-25 text-light mt-4 mb-2"
+                    >Add</a
+                  >
+                  <!-- <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Cancel
+                  </button> -->
+                </div>
+
+                <!-- <hr class="my-4" /> -->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- The Products Section -->
+
+<section class="p-2 bg-light">
+  <!-- First Card Row Section -->
+  <div class="row">
+    <div class="container">
+      <div class="row justify-content-center p-2">
+        <div
+          class="col-sm-12 col-md-12 col-lg-4 mb-5 d-flex align-items-center justify-content-center"
+          *ngFor="let row of productData"
+        >
+          <div class="card border-light">
+            <img
+              src="../../../assets/images/871.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title fs-5">{{ row.productName }}</h5>
+              <p class="card-text">{{ row.productPrice }}</p>
+              <p class="card-text">{{ row.productDescription }}</p>
+
+              <!-- Edit,Update and Delete Section -->
+              <div class="d-flex align-items-center justify-content-between">
+                <div class="col-6">
+                  <a
+                    [routerLink]="['/dashboard/products/product-details']"
+                    class="btn btn-primary p-2"
+                    >Product details</a
+                  >
+                </div>
+                <div
+                  class="col-6 d-flex align-items-center justify-content-end"
+                >
+                  <a
+                    class="nav-link"
+                    (click)="onEdit(row)"
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#myModal"
+                    ><i class="fa-solid fa-pen-to-square me-3"></i
+                  ></a>
+
+                  <a
+                    class="nav-link"
+                    type="button"
+                    (click)="deleteProducts(row)"
+                    ><i class="fa-sharp fa-solid fa-trash"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

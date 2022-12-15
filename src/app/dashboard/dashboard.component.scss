@@ -1,0 +1,157 @@
+@import "../shared/styles/typography.scss";
+
+body {
+  overflow-x: hidden;
+}
+
+.toggler-border {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.bg-light {
+  background: #fff !important;
+}
+
+.button {
+  border: none;
+}
+
+.rounded-full {
+  border-radius: 100%;
+}
+
+#wrapper {
+  overflow-x: hidden;
+  background: linear-gradient(to right, #fff, #e8eeeb) !important;
+}
+
+.text-danger {
+  color: #649476 !important;
+  font-weight: 500;
+}
+
+.btn-success {
+  background: transparent !important;
+  color: #000 !important;
+  border: none;
+  font-size: 20px;
+}
+
+.btn-danger {
+  background: #649476 !important;
+  border: none;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+#menu-toggle {
+  cursor: pointer;
+}
+
+.list-group-item {
+  border: none;
+  padding: 20px 30px;
+}
+
+.list-group-item.active {
+  font-weight: bold;
+  border: none;
+  background-color: transparent;
+  color: #649476 !important;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.search {
+  height: 41px;
+  width: 230px;
+  background: #e8eeeb;
+  border-radius: 12px;
+}
+
+.search_bar {
+  margin-left: 1rem;
+  border: none;
+  outline: none;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin 0.25s ease-out;
+  -moz-transition: margin 0.25s ease-out;
+  -o-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+  .show {
+    margin-left: 0 !important;
+  }
+  .hide {
+    margin-left: -15rem !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .show {
+    margin-left: -15rem !important;
+  }
+  .hide {
+    margin-left: -0 !important;
+  }
+}

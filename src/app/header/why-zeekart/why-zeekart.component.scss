@@ -1,0 +1,79 @@
+.bg-light {
+  background: linear-gradient(to right, #649476, #78a27f) !important;
+}
+
+.bg-danger {
+  background: #fff !important;
+}
+
+.btn-danger {
+  background: #3c5b45 !important;
+  border: none;
+}
+
+.bg-warning {
+  background: #e8eeeb !important;
+}
+
+.bg-secondary {
+  background: #fff !important;
+}
+
+.bg-dark {
+  // background: #649476 !important;
+  background: linear-gradient(to right, #649476, #78a27f) !important;
+}
+
+.font-style {
+  font-size: 19px;
+}
+
+.p-style {
+  font-size: 15px;
+}
+
+.card_style {
+  border-radius: 10px;
+}
+
+.image {
+  color: orange !important;
+}
+
+.text-size {
+  font-size: 40px;
+}
+
+.why-text p {
+  font-size: 20px;
+}
+
+@media (max-width: 575.98px) {
+  .main-image {
+    display: none;
+  }
+
+  .why-text {
+    margin: 0;
+  }
+
+  .why-text h3 {
+    text-align: center;
+  }
+
+  .why-text p {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .text-size {
+    font-size: 30px;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .main-image {
+    display: none;
+  }
+}

@@ -1,0 +1,69 @@
+.btn-primary {
+  background: #649476 !important;
+  border: none;
+}
+
+.bg-light {
+  background: #e8eeeb !important;
+}
+
+// .bg-light {
+//   background: #75deef !important;
+// }
+
+.btn-success {
+  background: #649476 !important;
+  color: #fff;
+  border: none;
+  outline: none;
+}
+
+.text-danger {
+  color: #649476 !important;
+}
+
+.btn-secondary {
+  background: #fff !important;
+}
+
+.text-dark {
+  color: #000;
+}
+
+.font {
+  font-size: 15px;
+}
+
+.bg-success {
+  background: #e8eeeb !important;
+}
+
+.text-warning {
+  color: #ff0000 !important;
+}
+
+.btn-primary {
+  position: relative;
+  font-size: 15px;
+  line-height: 1.5;
+  border-radius: 10px;
+  color: #fff;
+  background: #649476 !important;
+  border: 0;
+  outline: none;
+  overflow: hidden;
+  transition: 0.2s;
+}
+
+.btn-primary input {
+  cursor: pointer;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  transform: scale(5);
+  opacity: 0;
+}
+
+.btn-primary:hover {
+  background: #e8eeeb !important;
+}

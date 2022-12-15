@@ -1,0 +1,161 @@
+<section class="bg-light p-4">
+  <!-- <div class="container"> -->
+  <div class="row justify-content-center">
+    <div class="col-sm-12 col-md-6 col-lg-6 py-5">
+      <div class="card border-light card_border mt-4 p-3 text-dark">
+        <div class="card-body">
+          <h3 class="card-title text-center mb-4">Contact Us</h3>
+          <form [formGroup]="contactForm">
+            <div class="form-outline mb-4">
+              <input
+                type="name"
+                class="form-control"
+                formControlName="fname"
+                placeholder="First name"
+              />
+              <div
+                class="mb-4"
+                *ngIf="
+                  contactForm.get('fname').invalid &&
+                  (contactForm.get('fname').dirty ||
+                    contactForm.get('fname').touched)
+                "
+              >
+                <p class="text-warning">*first name required</p>
+              </div>
+
+              <input
+                type="name"
+                class="form-control mt-4"
+                formControlName="lname"
+                placeholder="Last Name"
+              />
+              <div
+                class="mb-4"
+                *ngIf="
+                  contactForm.get('lname').invalid &&
+                  (contactForm.get('lname').dirty ||
+                    contactForm.get('lname').touched)
+                "
+              >
+                <p class="text-warning">*last name required</p>
+              </div>
+
+              <input
+                type="email"
+                class="form-control mt-4"
+                formControlName="email"
+                placeholder="zeekart@gmail.com"
+              />
+              <div
+                class="mb-4"
+                *ngIf="
+                  contactForm.get('email').invalid &&
+                  (contactForm.get('email').dirty ||
+                    contactForm.get('email').touched)
+                "
+              >
+                <p class="text-warning">*email required</p>
+              </div>
+
+              <input
+                type="number"
+                class="form-control mt-4"
+                formControlName="pnumber"
+                placeholder="Phone number"
+              />
+              <div
+                class="mb-4"
+                *ngIf="
+                  contactForm.get('pnumber').invalid &&
+                  (contactForm.get('pnumber').dirty ||
+                    contactForm.get('pnumber').touched)
+                "
+              >
+                <p class="text-warning">*Phone number required</p>
+              </div>
+
+              <div class="row align-items-center">
+                <div class="col-12 mb-4 mt-4">
+                  <textarea
+                    class="form-control"
+                    rows="4"
+                    placeholder="What can we do for you?"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+
+            <a
+              type="submit"
+              role="button"
+              class="btn btn-success w-100 mb-4 text-light"
+              (click)="onSubmit()"
+              >Send a message</a
+            >
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 mt-5 main-image">
+      <img
+        src="../../../assets/images/3953918-removebg-preview.png"
+        alt=""
+        class="w-100 mt-3"
+      />
+    </div>
+  </div>
+  <!-- </div> -->
+</section>
+
+<!-- We'd love to hear from you section -->
+<section class="bg-warning p-3">
+  <div class="container">
+    <div class="row">
+      <p class="text-center">Contact us</p>
+      <h3 class="text-center">We'd love to hear from you</h3>
+      <p class="text-center">Chat with our friendly team</p>
+      <div class="row justify-content-center mt-4">
+        <div class="col-sm-12 col-md-12 col-lg-4 mb-4">
+          <div class="card border-light bg-light" style="width: 18rem">
+            <div class="col-2 ms-3 mt-2 card_style bg-dark p-2 text-center">
+              <i class="fa-regular fa-message fs-4"></i>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fs-6 fw-bold">Chat with ZeeKart</h5>
+              <p class="card-text">Speak to our friendly team</p>
+              <a href="#" class="nav-link text-danger">zeekart@gmail.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-4 mb-4">
+          <div class="card border-light bg-light" style="width: 18rem">
+            <div class="col-2 ms-3 mt-2 card_style bg-dark p-2 text-center">
+              <i class="fa-solid fa-droplet fs-4"></i>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fs-6 fw-bold">Visit Us</h5>
+              <p class="card-text">visit our office headquarters</p>
+              <a href="#" class="nav-link text-danger"
+                >ZeeKart Ecommerce Office</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-4 mb-4">
+          <div class="card border-light bg-light" style="width: 18rem">
+            <div class="col-2 ms-3 mt-2 card_style bg-dark p-2 text-center">
+              <i class="fa-solid fa-phone fs-4"></i>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fs-6 fw-bold">Call Us</h5>
+              <p class="card-text">Mon - Fri from 8am to 6pm</p>
+              <a href="#" class="nav-link text-danger">+234 81739848</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,55 @@
+@import "../shared/styles/typography.scss";
+
+.bg-light {
+  background: #fff !important;
+}
+
+.width {
+  width: 100% !important;
+}
+
+.navigation {
+  padding: 0 2.5rem;
+  position: fixed;
+  width: 100%;
+  left: 0%;
+  right: 0%;
+  z-index: 100;
+}
+
+.start_style {
+  padding: 6px 6px;
+}
+
+.text-danger {
+  color: #3c5b45 !important;
+  font-family: "Mulish";
+}
+
+.login {
+  border: none;
+}
+
+.btn-danger {
+  background: #3c5b45 !important;
+  border: none;
+}
+
+.text-dark {
+  color: #000 !important;
+  font-weight: 400;
+}
+
+.button {
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .navigation {
+    padding: 5px 5px;
+  }
+
+  .brand_logo {
+    margin-bottom: 10px;
+  }
+}

@@ -1,0 +1,72 @@
+@import "../../shared/styles/typography.scss";
+
+.bg-warning {
+  // background: #649476 !important;
+  background: linear-gradient(to right, #649476, #78a27f) !important;
+}
+
+.bg-light {
+  background: #fff !important;
+}
+
+.bg-success {
+  background: #e8eeeb !important;
+}
+
+.text-warning {
+  color: #ff0000 !important;
+}
+
+.bg-secondary {
+  background: #fff !important;
+}
+
+.para {
+  font-size: 12px;
+}
+
+.bg-dark {
+  background: #fff !important;
+}
+
+.bg-danger {
+  background: #fff !important;
+}
+
+.bg-danger:hover {
+  background: #e8eeeb !important;
+}
+
+.text-size {
+  font-size: 45px;
+}
+
+.font-text {
+  font-size: 33px;
+}
+
+.btn-danger {
+  background: #3c5b45 !important;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .main-image {
+    display: none;
+  }
+  .text-size {
+    font-size: 40px;
+    margin-top: 0;
+  }
+  .button {
+    flex-direction: column;
+    margin-right: 20px;
+  }
+  .sign_up {
+    margin-top: 15px;
+    width: 100%;
+  }
+  .tab_text {
+    padding: 0;
+  }
+}

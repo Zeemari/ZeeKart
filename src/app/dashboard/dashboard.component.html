@@ -1,0 +1,114 @@
+<section class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div
+    class="bg-light border-right"
+    id="sidebar-wrapper"
+    [ngClass]="status ? 'hide' : 'show'"
+  >
+    <div class="sidebar-heading text-start text-danger border-bottom">
+      <a [routerLink]="['/']" class="navbar-brand">
+        <span class="text-danger lead fw-bold">ZEEKART</span>
+      </a>
+    </div>
+    <div class="list-group list-group-flush my-3">
+      <a
+        [routerLink]="['/dashboard']"
+        class="list-group-item list-group-item-action bg-transparent active second-text text-dark"
+      >
+        <i class="fas fa-gift me-2"></i> Products
+      </a>
+      <a
+        [routerLink]="['/dashboard/all-products']"
+        class="list-group-item list-group-item-action bg-transparent second-text text-dark mb-2"
+      >
+        <i class="fas fa-shopping-cart me-2"></i> All Products</a
+      >
+      <a
+        [routerLink]="['/dashboard/add-product']"
+        class="list-group-item list-group-item-action bg-transparent second-text text-dark"
+      >
+        <i class="fas fa-tachometer me-2"></i> Add Product</a
+      >
+
+      <a
+        [routerLink]="['/login']"
+        class="list-group-item list-group-item-action bg-transparent second-text text-danger"
+      >
+        <i class="fas fa-project-diagram me-2"></i> Log out</a
+      >
+    </div>
+  </div>
+
+  <!-- End of Sidebar -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <div
+          class="col-12 d-flex align-items-center justify-content-between p-2"
+        >
+          <a
+            (click)="clickEvent()"
+            type="submit"
+            role="button"
+            class="btn btn-success text-light"
+          >
+            <i class="fas fa-align-left"></i>
+          </a>
+
+          <!-- Search Button -->
+          <div
+            class="d-flex align-items-center pl-3 ms-1 search"
+            id="navbarSupportedContent"
+          >
+            <img
+              src="../../assets/images/Search.svg"
+              alt=""
+              class="img-fluid p-2 ms-2"
+            />
+            <input
+              type="search"
+              class="search_bar"
+              name=""
+              placeholder="Search for products...."
+              id=""
+            />
+          </div>
+
+          <!-- The navbar unordered list -->
+          <div class="">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item-dropdown">
+                <a
+                  href=""
+                  class="nav-link dropdown-toggle me-2 second-text text-dark fw-bold"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bi bi-bell fs-6 me-1 ms-2"></i>
+                  <i class="fas fa-user me-1 ms-1 fw-normal fs-6"> </i>
+                  <span class="fw-normal ms-1 fs-6">Zainab</span>
+                  <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a href="" class="dropdown-item">Profile</a></li>
+                    <li><a href="" class="dropdown-item">Settings</a></li>
+                    <li><a href="" class="dropdown-item">Logout</a></li>
+                  </ul> -->
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Router Outlet -->
+    <div class="wrapper">
+      <div class="col-12">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</section>
