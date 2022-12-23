@@ -1,3 +1,5 @@
+@import "../../../app/shared/styles/typography.scss";
+
 .text-danger {
   color: #3c5b45 !important;
   font-family: "Mulish";
@@ -5,4 +7,12 @@
 
 .support {
   flex-direction: column;
+}
+
+@media (max-width: 441.98px) {
+  .last-style {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

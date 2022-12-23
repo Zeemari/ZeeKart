@@ -1,16 +1,18 @@
-<!-- Add Product Modal -->
 <section class="bg-light">
   <div class="container">
     <div class="d-flex align-items-center justify-content-end">
-      <button
-        class="btn btn-success mt-2 me-3"
-        (click)="clickAddProduct()"
-        type="button"
-        data-bs-toggle="modal"
-        data-bs-target="#myModal"
-      >
-        New product +
-      </button>
+      <div class="col-12 d-flex align-items-center justify-content-end py-3">
+        <!-- Add Product Modal  Section-->
+        <button
+          class="btn btn-success"
+          (click)="clickAddProduct()"
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#myModal"
+        >
+          New product +
+        </button>
+      </div>
       <div class="modal fade" id="myModal" tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -42,7 +44,7 @@
                   </div>
 
                   <input
-                    type="number"
+                    type="name"
                     class="form-control mt-4"
                     formControlName="price"
                     placeholder="Product price"
@@ -74,7 +76,17 @@
                   >
                     <button type="button" class="btn btn-primary">
                       <i class="fas fa-upload"></i> <span> Upload Image</span>
-                      <input type="file" />
+                      <input
+                        type="file"
+                        formControlName="image"
+                        name="avatar"
+                        multiple
+                        value="select"
+                        #selectFile
+                        #Image
+                        accept="image/*"
+                        (change)="onselectFile($event)"
+                      />
                     </button>
                   </div>
                 </div>
@@ -88,7 +100,6 @@
                     class="btn btn-success w-25 text-light mt-4 mb-2"
                     >Update</a
                   >
-
                   <a
                     type="submit"
                     *ngIf="showAdd"
@@ -119,31 +130,29 @@
 <!-- The Products Section -->
 
 <section class="p-2 bg-light">
-  <!-- First Card Row Section -->
   <div class="row">
     <div class="container">
       <div class="row justify-content-center p-2">
+        <!-- NgFor Section -->
         <div
           class="col-sm-12 col-md-12 col-lg-4 mb-5 d-flex align-items-center justify-content-center"
           *ngFor="let row of productData"
         >
           <div class="card border-light">
-            <img
-              src="../../../assets/images/871.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img [src]="imageUrl" alt="" class="card-img-top" />
             <div class="card-body">
-              <h5 class="card-title fs-5">{{ row.productName }}</h5>
-              <p class="card-text">{{ row.productPrice }}</p>
-              <p class="card-text">{{ row.productDescription }}</p>
+              <h5 class="card-title fs-5">{{ row.name }}</h5>
+              <p class="card-text fs-6 fw-bold">
+                {{ row.price | currency : "USD" }}
+              </p>
+              <p class="card-text fs-6">{{ row.description }}</p>
 
               <!-- Edit,Update and Delete Section -->
               <div class="d-flex align-items-center justify-content-between">
                 <div class="col-6">
                   <a
                     [routerLink]="['/dashboard/products/product-details']"
-                    class="btn btn-primary p-2"
+                    class="btn btn-primary p-2 fs-6"
                     >Product details</a
                   >
                 </div>

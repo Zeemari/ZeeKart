@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/api/auth/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +13,7 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient,
+    private _auth: AuthService,
     private _router: Router
   ) {}
 
@@ -54,17 +54,32 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-    this.http
-      .post<any>('http://localhost:3000/signup', this.signupForm.value)
-      .subscribe(
-        (res) => {
-          alert('Signup successful');
-          this.signupForm.reset();
-          this._router.navigate(['/login']);
-        },
-        (err) => {
-          alert('please confirm your signup details');
-        }
-      );
+    type PostUser = {
+      name: string;
+      email: string;
+      password: string;
+      password_confirmation: string;
+    };
+
+    const postUser: PostUser = {
+      name: this.signupForm.value.name,
+      email: this.signupForm.value.email,
+      password: this.signupForm.value.password,
+      password_confirmation: this.signupForm.value.password,
+    };
+
+    this._auth.registerUser(postUser).subscribe(
+      (res) => {
+        const userObject = JSON.stringify(postUser);
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('user', userObject);
+        alert('User Registered Successfully');
+        this.signupForm.reset();
+        this._router.navigate(['/login']);
+      },
+      (err) => {
+        alert('please confirm your signup details');
+      }
+    );
   }
 }

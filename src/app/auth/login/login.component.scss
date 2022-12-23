@@ -30,3 +30,18 @@
 .text-warning {
   color: #ff0000 !important;
 }
+
+@media (max-width: 375px) {
+  .text-size {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 320px) {
+  .text-size {
+    font-size: 10.5px;
+  }
+  .start-style {
+    font-size: 15px;
+  }
+}

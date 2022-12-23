@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RouteGuard } from './shared/guard/route.guard';
+import { AuthGuard } from './shared/guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -12,18 +12,17 @@ const routes: Routes = [
     path: 'dashboard',
     loadChildren: () =>
       import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'login',
     loadChildren: () =>
       import('./auth/login/login.module').then((m) => m.LoginModule),
-    canActivate: [RouteGuard],
   },
   {
     path: 'signup',
     loadChildren: () =>
       import('./auth/signup/signup.module').then((m) => m.SignupModule),
-    canActivate: [RouteGuard],
   },
   {
     path: 'forgot-password',
@@ -31,7 +30,6 @@ const routes: Routes = [
       import('./auth/f-password/f-password.module').then(
         (m) => m.FPasswordModule
       ),
-    canActivate: [RouteGuard],
   },
 ];
 

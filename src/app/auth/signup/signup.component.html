@@ -1,8 +1,8 @@
-<section class="bg-success">
-  <div class="container py-4 vh-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
+<section class="bg-success py-3">
+  <div class="container">
+    <div class="row d-flex justify-content-center align-items-center">
       <div class="col-sm-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="card shadow-2-strong border-light">
+        <div class="card border-light mt-3 mb-4">
           <div class="card-body p-5 text-center">
             <a
               [routerLink]="['']"
@@ -10,7 +10,7 @@
             >
               <span class="text-danger lead font fw-bold">ZEEKART</span>
             </a>
-            <h5 class="text-center fw-bold mt-3">SIGN UP</h5>
+            <h5 class="text-center fs-6 fw-bold mt-3">SIGN IN</h5>
 
             <form [formGroup]="signupForm">
               <div class="form-outline mb-4">
@@ -18,6 +18,7 @@
                   type="name"
                   class="form-control"
                   formControlName="name"
+                  name="name"
                   placeholder="Name"
                 />
                 <div
@@ -33,6 +34,7 @@
 
                 <input
                   type="email"
+                  name="email"
                   class="form-control mt-4"
                   formControlName="email"
                   placeholder="Email"
@@ -51,6 +53,7 @@
                 <input
                   type="password"
                   class="form-control mt-4"
+                  name="password"
                   formControlName="password"
                   placeholder="password"
                 />
@@ -70,6 +73,7 @@
                   type="password"
                   class="form-control mt-4"
                   formControlName="conpassword"
+                  name="conpassword"
                   placeholder="confirm password"
                 />
 

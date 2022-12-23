@@ -1,16 +1,18 @@
-<section class="bg-warning">
-  <!-- <div class="container"> -->
-  <div class="row justify-content-center">
-    <div class="col-sm-12 col-md-6 col-lg-6 p-5 mt-5 text-light tab_text">
-      <h3 class="mt-5 fw-bold text-size p-2">
+<!-- Build your business Section -->
+<section class="bg-warning p-1">
+  <div class="row justify-content-center mt-4">
+    <div
+      class="col-sm-12 col-md-6 col-lg-6 mt-5 p-4 text-light build-style tab_text"
+    >
+      <h1 class="fw-bolder text-size p-2 mt-5">
         If you can dream it, <br />
         you can sell it with <br />
         ZeeKart
-      </h3>
-      <p class="mt-3 p-2">Build your business here. Take it anywhere.</p>
+      </h1>
+      <p class="mt-3 fs-6 p-2">Build your business here. Take it anywhere.</p>
 
-      <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-8 mb-2 p-2">
+      <div class="row mt-2">
+        <div class="col-sm-12 col-md-6 col-lg-8 p-2">
           <form [formGroup]="emailForm">
             <div class="form-outline">
               <input
@@ -43,31 +45,30 @@
           >
         </div>
       </div>
-
-      <p class="para p-2">
+      <p class="para psmall-style p-2">
         You can try ZeeKart for free, no credit card required. By entering your
-        email, <br />
-        you agree to receive marketing emails from ZeeKart.
+        email, you agree to receive <br />
+        marketing emails from ZeeKart.
       </p>
     </div>
     <div class="col-6 main-image">
       <img
-        src="../../../assets/images/inside-weather-dbH_vy7vICE-unsplash.jpg"
+        src="../../../assets/images/mid-century-modern-living-room-interior-design-with-monstera-tree (1).jpg"
         alt=""
-        class="img-fluid"
+        class="img-fluid w-100"
+        style="height: 530px"
       />
     </div>
   </div>
-  <!-- </div> -->
 </section>
 
 <!-- ZeeKart key features Section -->
 <section class="bg-dark text-dark p-5 text-center">
   <!-- <div class="container"> -->
   <div class="row justify-content-center">
-    <h1 class="text-center fw-1 fs-3 my-4">ZeeKart key features!</h1>
+    <h1 class="text-center bold fs-5 my-4">ZeeKart key features!</h1>
     <div
-      class="col-sm-12 col-md-6 col-lg-3 mb-4 mt-4"
+      class="col-sm-12 col-md-6 col-lg-3 p-2 mb-4 mt-4"
       *ngFor="let time of times"
     >
       <div
@@ -77,8 +78,8 @@
           <img [src]="time.image" alt="image" class="img-fluid" />
         </div>
         <div class="card-body text-center">
-          <h5 class="card-title mb-4">{{ time.name }}</h5>
-          <p class="card-text text-center">
+          <h5 class="card-title mb-4 fs-4 bold">{{ time.name }}</h5>
+          <p class="card-text text-center p-text">
             {{ time.text }}
           </p>
         </div>
@@ -93,8 +94,8 @@
   <!-- <div class="container"> -->
   <div class="row">
     <div class="col-sm-12 col-md-6 col-lg-6 p-5 mt-5">
-      <h3 class="mt-5 mb-4">Connect with customers everywhere</h3>
-      <p>
+      <h3 class="mt-5 mb-4 fs-5 bold">Connect with customers everywhere!</h3>
+      <p class="p-text">
         Sell online, in person, or both with the marketing tools, social <br />
         integrations, and sales channels you need to get your products in <br />
         front of customers—and out the door.
@@ -126,8 +127,8 @@
 <section class="bg-warning p-5">
   <div class="row">
     <div class="col-12 text-light">
-      <h3 class="text-center fw-bold font-text">Grow your business here</h3>
-      <p class="text-center mt-3 lead">
+      <h3 class="text-center fs-5 bold">Grow your business here!</h3>
+      <p class="text-center mt-3 text-light p_text">
         Whether you want to sell products down the street or around the world,
         we have all the tools you need.
       </p>

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './header.component';
-import { RouteGuard } from '../shared/guard/route.guard';
 
 const routes: Routes = [
   {
@@ -12,7 +11,6 @@ const routes: Routes = [
         path: '',
         loadChildren: () =>
           import('./index/index.module').then((m) => m.IndexModule),
-        canActivate: [RouteGuard],
       },
 
       {
@@ -21,7 +19,6 @@ const routes: Routes = [
           import('./why-zeekart/why-zeekart.module').then(
             (m) => m.WhyZeekartModule
           ),
-        canActivate: [RouteGuard],
       },
       {
         path: 'contact-us',
@@ -29,7 +26,6 @@ const routes: Routes = [
           import('./contact-us/contact-us.module').then(
             (m) => m.ContactUsModule
           ),
-        canActivate: [RouteGuard],
       },
     ],
   },

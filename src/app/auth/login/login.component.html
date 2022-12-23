@@ -1,8 +1,8 @@
 <section class="bg-success vh-100">
-  <div class="container py-4 px-4">
+  <div class="container">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-sm-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="card shadow-2-strong mt-5 border-light">
+        <div class="card mt-5 border-light">
           <div class="card-body p-5 text-center">
             <a
               [routerLink]="['']"
@@ -17,6 +17,8 @@
                 <input
                   type="email"
                   class="form-control"
+                  name="email"
+                  [(ngModel)]="email"
                   formControlName="email"
                   placeholder="musazainab@hooliodevs.com"
                 />
@@ -33,6 +35,8 @@
 
                 <input
                   type="password"
+                  name="password"
+                  [(ngModel)]="password"
                   class="form-control mt-4"
                   formControlName="password"
                   placeholder="***********"
@@ -45,13 +49,11 @@
                       loginForm.get('password').touched)
                   "
                 >
-                  <p class="text-warning">*please provide your email</p>
+                  <p class="text-warning">*please provide your password</p>
                 </div>
               </div>
 
-              <div
-                class="d-flex align-items-center justify-content-between mb-3"
-              >
+              <div class="d-flex align-items-center justify-content-between">
                 <!-- Remember me Section -->
                 <div class="d-flex align-item-center justify-content-between">
                   <div class="form-check">
@@ -61,7 +63,10 @@
                       value=""
                       id="flexCheckDefault"
                     />
-                    <label class="form-check-label" for="flexCheckDefault">
+                    <label
+                      class="form-check-label text-size mb-2"
+                      for="flexCheckDefault"
+                    >
                       Remember me
                     </label>
                   </div>
@@ -69,7 +74,9 @@
 
                 <!-- Forgot Password Section -->
                 <div class="text-start">
-                  <a [routerLink]="['/forgot-password']" class="nav-link"
+                  <a
+                    [routerLink]="['/forgot-password']"
+                    class="nav-link text-size mb-2"
                     >Forgotten password?</a
                   >
                 </div>
@@ -86,11 +93,11 @@
               <!-- </button> -->
             </form>
             <div class="text-start mt-3">
-              <p class="fs-6">
+              <p class="fs-6 start-style">
                 New to zeekart?
                 <a
                   [routerLink]="['/signup']"
-                  class="text-decoration-none text-success"
+                  class="text-decoration-none text-success start-style"
                   >Get started</a
                 >
               </p>

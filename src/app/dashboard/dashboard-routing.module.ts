@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../shared/guard/auth.guard';
 import { DashboardComponent } from './dashboard.component';
-import { RouteGuard } from '../shared/guard/route.guard';
-import { ChildRouteGuard } from '../shared/guard/child-route.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
+
     children: [
       // {
       //   path: '',
@@ -19,7 +19,7 @@ const routes: Routes = [
         path: '',
         loadChildren: () =>
           import('./products/products.module').then((m) => m.ProductsModule),
-        canActivate: [RouteGuard],
+        canActivate: [AuthGuard],
       },
       {
         path: 'add-product',
@@ -27,7 +27,7 @@ const routes: Routes = [
           import('./add-product/add-product.module').then(
             (m) => m.AddProductModule
           ),
-        canActivate: [RouteGuard],
+        canActivate: [AuthGuard],
       },
       {
         path: 'products/product-details',
@@ -35,7 +35,7 @@ const routes: Routes = [
           import('./products/product-details/product-details.module').then(
             (m) => m.ProductDetailsModule
           ),
-        canActivateChild: [ChildRouteGuard],
+        canActivate: [AuthGuard],
       },
       {
         path: 'all-products',
@@ -43,7 +43,7 @@ const routes: Routes = [
           import('./all-products/all-products.module').then(
             (m) => m.AllProductsModule
           ),
-        canActivate: [RouteGuard],
+        canActivate: [AuthGuard],
       },
     ],
   },

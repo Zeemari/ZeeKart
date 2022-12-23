@@ -1,5 +1,11 @@
+@import "../../../app/shared/styles/typography.scss";
+
 .bg-light {
   background: linear-gradient(to right, #649476, #78a27f) !important;
+}
+
+.border-light {
+  border: none !important;
 }
 
 .bg-danger {
@@ -24,28 +30,12 @@
   background: linear-gradient(to right, #649476, #78a27f) !important;
 }
 
-.font-style {
-  font-size: 19px;
-}
-
-.p-style {
-  font-size: 15px;
-}
-
 .card_style {
   border-radius: 10px;
 }
 
 .image {
   color: orange !important;
-}
-
-.text-size {
-  font-size: 40px;
-}
-
-.why-text p {
-  font-size: 20px;
 }
 
 @media (max-width: 575.98px) {

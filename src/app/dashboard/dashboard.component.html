@@ -5,34 +5,39 @@
     id="sidebar-wrapper"
     [ngClass]="status ? 'hide' : 'show'"
   >
-    <div class="sidebar-heading text-start text-danger border-bottom">
+    <div class="sidebar-heading text-start text-danger border-bottom mt-2">
       <a [routerLink]="['/']" class="navbar-brand">
-        <span class="text-danger lead fw-bold">ZEEKART</span>
+        <span class="text-danger lead bold">ZEEKART</span>
       </a>
     </div>
     <div class="list-group list-group-flush my-3">
       <a
         [routerLink]="['/dashboard']"
-        class="list-group-item list-group-item-action bg-transparent active second-text text-dark"
+        routerLinkActive="active"
+        class="list-group-item list-group-item-action bg-transparent second-text text-dark fs-6"
       >
         <i class="fas fa-gift me-2"></i> Products
       </a>
       <a
         [routerLink]="['/dashboard/all-products']"
-        class="list-group-item list-group-item-action bg-transparent second-text text-dark mb-2"
+        routerLinkActive="active"
+        class="list-group-item list-group-item-action bg-transparent second-text text-dark mb-2 fs-6"
       >
         <i class="fas fa-shopping-cart me-2"></i> All Products</a
       >
       <a
         [routerLink]="['/dashboard/add-product']"
-        class="list-group-item list-group-item-action bg-transparent second-text text-dark"
+        routerLinkActive="active"
+        class="list-group-item list-group-item-action bg-transparent second-text text-dark fs-6"
       >
         <i class="fas fa-tachometer me-2"></i> Add Product</a
       >
 
       <a
-        [routerLink]="['/login']"
-        class="list-group-item list-group-item-action bg-transparent second-text text-danger"
+        routerLinkActive="active"
+        class="list-group-item list-group-item-action bg-transparent second-text text-danger fs-6"
+        style="cursor: pointer"
+        (click)="_authService.logoutUser()"
       >
         <i class="fas fa-project-diagram me-2"></i> Log out</a
       >
@@ -69,7 +74,7 @@
             />
             <input
               type="search"
-              class="search_bar"
+              class="search_bar fs-4"
               name=""
               placeholder="Search for products...."
               id=""
@@ -88,9 +93,9 @@
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <i class="bi bi-bell fs-6 me-1 ms-2"></i>
-                  <i class="fas fa-user me-1 ms-1 fw-normal fs-6"> </i>
-                  <span class="fw-normal ms-1 fs-6">Zainab</span>
+                  <i class="bi bi-bell fs-4 me-1 ms-2"></i>
+                  <i class="fas fa-user me-1 ms-1 fw-normal fs-4"> </i>
+                  <span class="fw-normal ms-1 fs-4">{{ user?.email }}</span>
                   <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a href="" class="dropdown-item">Profile</a></li>
                     <li><a href="" class="dropdown-item">Settings</a></li>
