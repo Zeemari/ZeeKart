@@ -1,25 +1,52 @@
-<section class="p-2 bg-light">
-  <!-- First Card Row Section -->
-  <div class="row p-3">
+<!-- The Products Section -->
+
+<section class="p-1 bg-light">
+  <div class="row">
     <div class="container">
-      <div class="row justify-content-center">
+      <div class="row justify-content-center p-2">
+        <!-- NgFor Section -->
         <div
-          class="col-sm-12 col-md-12 col-lg-4 mb-3 d-flex align-items-center justify-content-center"
+          class="col-sm-12 col-md-12 col-lg-4 mb-5 d-flex align-items-center justify-content-center"
+          *ngFor="let row of productData"
         >
           <div class="card border-light">
-            <img
-              src="../../../assets/images/Sweater_Mockup_Front_and_Back.jpg"
-              class="card-img-top"
-              alt="..."
-            />
+            <img [src]="imageUrl" alt="" class="card-img-top" />
             <div class="card-body">
-              <h5 class="card-title fs-4">Sweat Shirt</h5>
-              <p class="card-text fs-5">$150.00</p>
-              <!-- <a
-                [routerLink]="['/dashboard/products/product-details']"
-                class="btn btn-primary"
-                >Product details</a
-              > -->
+              <h5 class="card-title fs-5">{{ row.name }}</h5>
+              <p class="card-text fs-6 fw-bold">
+                {{ row.price | currency : "USD" }}
+              </p>
+              <p class="card-text fs-6">{{ row.description }}</p>
+
+              <!-- Edit,Update and Delete Section -->
+              <div class="d-flex align-items-center justify-content-between">
+                <div class="col-6">
+                  <a
+                    [routerLink]="['/dashboard/products/product-details']"
+                    class="btn btn-primary p-2 fs-6"
+                    >Product details</a
+                  >
+                </div>
+                <div
+                  class="col-6 d-flex align-items-center justify-content-end"
+                >
+                  <a
+                    class="nav-link"
+                    (click)="onEdit(row)"
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#myModal"
+                    ><i class="fa-solid fa-pen-to-square me-3"></i
+                  ></a>
+
+                  <a
+                    class="nav-link"
+                    type="button"
+                    (click)="deleteProducts(row)"
+                    ><i class="fa-sharp fa-solid fa-trash"></i>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>

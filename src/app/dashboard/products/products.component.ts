@@ -11,8 +11,18 @@ import { ProductsModel } from './products.model';
 })
 export class ProductsComponent implements OnInit {
   myForm: FormGroup | any;
+
+  // To enable ngModel
+  productData: any[] = [];
+  product: any = {
+    name: '',
+    price: '',
+    description: '',
+  };
+
+  // Created a Product model file
   productsModelObj: ProductsModel = new ProductsModel();
-  productData!: any;
+  // productData!: any;
   fileToUpload: File = null;
   user: any;
 
@@ -53,33 +63,39 @@ export class ProductsComponent implements OnInit {
 
   // Add Product section
 
-  addProduct() {
-    this.productsModelObj.name = this.myForm.value.name;
-    this.productsModelObj.price = this.myForm.value.price;
-    this.productsModelObj.description = this.myForm.value.description;
+  addProduct(data: any) {
+    // Used Local Storage
+    this.productData.push(this.product);
+    localStorage.setItem('productList', JSON.stringify(this.productData));
 
-    this.api.postProduct(this.productsModelObj).subscribe(
-      (res) => {
-        let listItem = localStorage.getItem('addList');
-        if (listItem) {
-          let addList: Array<any> = JSON.parse(listItem);
-          addList.push(ProductsModel);
-          localStorage.setItem('addList', JSON.stringify(addList));
+    // My Code using endpoints
 
-          const userObject = JSON.stringify(this.productsModelObj);
-          localStorage.setItem('addList', userObject);
-        } else {
-          localStorage.setItem('addList', JSON.stringify([ProductsModel]));
-        }
-        this.myForm.reset();
-        this.getAllProducts();
+    // this.productsModelObj.name = this.myForm.value.name;
+    // this.productsModelObj.price = this.myForm.value.price;
+    // this.productsModelObj.description = this.myForm.value.description;
 
-        alert('Product Added Successfully');
-      },
-      (err) => {
-        alert('something went wrong');
-      }
-    );
+    // this.api.postProduct(this.productsModelObj).subscribe(
+    //   (res) => {
+    //     let listItem = localStorage.getItem('addList');
+    //     if (listItem) {
+    //       let addList: Array<any> = JSON.parse(listItem);
+    //       addList.push(ProductsModel);
+    //       localStorage.setItem('addList', JSON.stringify(addList));
+
+    //       const userObject = JSON.stringify(this.productsModelObj);
+    //       localStorage.setItem('addList', userObject);
+    //     } else {
+    //       localStorage.setItem('addList', JSON.stringify([ProductsModel]));
+    //     }
+    //     this.myForm.reset();
+    //     this.getAllProducts();
+
+    //     alert('Product Added Successfully');
+    //   },
+    //   (err) => {
+    //     alert('something went wrong');
+    //   }
+    // );
   }
 
   // Get all products section
@@ -117,7 +133,7 @@ export class ProductsComponent implements OnInit {
     this.api
       .updateProduct(this.productsModelObj, this.productsModelObj.id)
       .subscribe((res) => {
-        alert('updated successfully');
+        // alert('updated successfully');
         this.getAllProducts();
       });
   }

@@ -32,6 +32,7 @@
                     class="form-control"
                     formControlName="name"
                     placeholder="Product name"
+                    [(ngModel)]="product.name"
                   />
                   <div
                     class="mb-4"
@@ -48,6 +49,7 @@
                     class="form-control mt-4"
                     formControlName="price"
                     placeholder="Product price"
+                    [(ngModel)]="product.price"
                   />
                   <div
                     class=""
@@ -64,8 +66,10 @@
                       <textarea
                         class="form-control"
                         rows="4"
+                        name="message"
                         formControlName="description"
                         placeholder="Product description"
+                        [(ngModel)]="product.description"
                       ></textarea>
                     </div>
                   </div>
@@ -103,7 +107,7 @@
                   <a
                     type="submit"
                     *ngIf="showAdd"
-                    (click)="addProduct()"
+                    (click)="addProduct(myForm)"
                     role="button"
                     class="btn btn-success w-25 text-light mt-4 mb-2"
                     >Add</a
@@ -129,7 +133,7 @@
 
 <!-- The Products Section -->
 
-<section class="p-2 bg-light">
+<section class="p-1 bg-light">
   <div class="row">
     <div class="container">
       <div class="row justify-content-center p-2">
