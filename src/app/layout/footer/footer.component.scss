@@ -9,6 +9,10 @@
   flex-direction: column;
 }
 
+.fw-bold {
+  font-weight: 700 !important;
+}
+
 @media (max-width: 441.98px) {
   .last-style {
     display: flex;
