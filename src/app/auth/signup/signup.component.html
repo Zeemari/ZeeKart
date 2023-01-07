@@ -1,6 +1,6 @@
-<section class="bg-success py-3">
+<section class="bg-success vh-100">
   <div class="container">
-    <div class="row d-flex justify-content-center align-items-center">
+    <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-sm-12 col-md-8 col-lg-6 col-xl-5">
         <div class="card border-light mt-3 mb-4">
           <div class="card-body p-5 text-center">
@@ -8,18 +8,18 @@
               [routerLink]="['']"
               class="navbar-brand d-flex align-items-center justify-content-start"
             >
-              <span class="text-danger lead font fw-bold">ZEEKART</span>
+              <span class="text-danger lead font fw-bold Mulish">ZEEKART</span>
             </a>
-            <h5 class="text-center fs-6 fw-bold mt-3">SIGN IN</h5>
+            <h5 class="text-center fs-6 fw-bold mt-3 Mulish">SIGN IN</h5>
 
             <form [formGroup]="signupForm">
               <div class="form-outline mb-4">
                 <input
                   type="name"
-                  class="form-control"
+                  class="form-control Mulish"
                   formControlName="name"
                   name="name"
-                  placeholder="Name"
+                  placeholder="name"
                 />
                 <div
                   class="mb-4"
@@ -35,9 +35,9 @@
                 <input
                   type="email"
                   name="email"
-                  class="form-control mt-4"
+                  class="form-control mt-4 Mulish"
                   formControlName="email"
-                  placeholder="Email"
+                  placeholder="email"
                 />
                 <div
                   class="mb-4"
@@ -52,7 +52,7 @@
 
                 <input
                   type="password"
-                  class="form-control mt-4"
+                  class="form-control mt-4 Mulish"
                   name="password"
                   formControlName="password"
                   placeholder="password"
@@ -71,7 +71,7 @@
 
                 <input
                   type="password"
-                  class="form-control mt-4"
+                  class="form-control mt-4 Mulish"
                   formControlName="conpassword"
                   name="conpassword"
                   placeholder="confirm password"
@@ -93,7 +93,7 @@
                     value=""
                     id="flexCheckDefault"
                   />
-                  <label class="form-check-label" for="flexCheckDefault">
+                  <label class="form-check-label Mulish" for="flexCheckDefault">
                     I agree all statements in Terms of service
                   </label>
                 </div>
@@ -104,7 +104,7 @@
                 type="submit"
                 role="button"
                 (click)="onSubmit()"
-                class="btn btn-success w-100 text-light form-control"
+                class="btn btn-success w-100 text-light form-control Mulish"
                 >Register</a
               >
 
@@ -113,11 +113,11 @@
               <!-- <hr class="my-4" /> -->
             </form>
             <div class="text-start mt-3">
-              <p class="fs-6">
+              <p class="fs-6 Mulish">
                 Already have an account?
                 <a
                   [routerLink]="['/login']"
-                  class="text-decoration-none text-success"
+                  class="text-decoration-none text-success Mulish"
                   >Log in here!</a
                 >
               </p>
