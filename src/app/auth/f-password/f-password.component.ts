@@ -29,19 +29,28 @@ export class FPasswordComponent implements OnInit {
   }
 
   forgotPassword() {
-    this._authService.fpasswordUser(this.thisForm.value).subscribe(
-      (result) => {
-        this.successMsg = result;
-        const { token } = result.data;
-        const userObject = JSON.stringify(this.thisForm);
-        this._util.saveToLocalStorage('token', token);
+    type PostBody = {
+      email: string;
+    };
+
+    const postbody: PostBody = {
+      email: this.thisForm.value.email,
+    };
+
+    this._authService.fpasswordUser(postbody).subscribe(
+      (res: any) => {
+        const userObject = JSON.stringify(postbody);
         this._util.saveToLocalStorage('user', userObject);
-        alert('Successful!!!!');
+
         this.thisForm.reset();
-        this._router.navigate(['/login']);
+
+        alert('password reset link sent successfully');
+
+        this._router.navigate(['login']);
       },
-      (error) => {
-        alert('Kpele!!!');
+      (err: any) => {
+        this._router.navigate(['']);
+        alert('failed');
       }
     );
   }

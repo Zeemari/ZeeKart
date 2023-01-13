@@ -7,35 +7,35 @@
   >
     <div class="sidebar-heading text-start text-danger border-bottom mt-2">
       <a [routerLink]="['/']" class="navbar-brand">
-        <span class="text-danger lead bold">ZEEKART</span>
+        <span class="text-danger lead fw-bold Mulish">ZEEKART</span>
       </a>
     </div>
     <div class="list-group list-group-flush my-3">
       <a
         [routerLink]="['/dashboard']"
         routerLinkActive="active"
-        class="list-group-item list-group-item-action bg-transparent second-text text-dark fs-6"
+        class="list-group-item list-group-item-action bg-transparent second-text text-dark fs-2 Mulish fw-bold"
       >
         <i class="fas fa-gift me-2"></i> Products
       </a>
       <a
         [routerLink]="['/dashboard/all-products']"
         routerLinkActive="active"
-        class="list-group-item list-group-item-action bg-transparent second-text text-dark mb-2 fs-6"
+        class="list-group-item list-group-item-action bg-transparent second-text text-dark mb-2 fs-2 Mulish fw-bold"
       >
         <i class="fas fa-shopping-cart me-2"></i> All Products</a
       >
-      <a
+      <!-- <a
         [routerLink]="['/dashboard/add-product']"
         routerLinkActive="active"
-        class="list-group-item list-group-item-action bg-transparent second-text text-dark fs-6"
+        class="list-group-item list-group-item-action bg-transparent second-text text-dark fs-2 Mulish fw-bold"
       >
         <i class="fas fa-tachometer me-2"></i> Add Product</a
-      >
+      > -->
 
       <a
         routerLinkActive="active"
-        class="list-group-item list-group-item-action bg-transparent second-text text-danger fs-6"
+        class="list-group-item list-group-item-action bg-transparent second-text text-danger fs-2 Mulish fw-bold"
         style="cursor: pointer"
         (click)="_authService.logoutUser()"
       >
@@ -74,7 +74,7 @@
             />
             <input
               type="search"
-              class="search_bar fs-4"
+              class="search_bar fs-4 Mulish"
               name=""
               placeholder="Search for products...."
               id=""
@@ -93,9 +93,11 @@
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <i class="bi bi-bell fs-4 me-1 ms-2"></i>
+                  <i class="bi bi-bell fs-4 me-1 ms-2 Mulish"></i>
                   <i class="fas fa-user me-1 ms-1 fw-normal fs-4"> </i>
-                  <span class="fw-normal ms-1 fs-4">{{ user?.email }}</span>
+                  <span class="fw-normal ms-1 fs-4 Mulish">{{
+                    user?.email
+                  }}</span>
                   <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a href="" class="dropdown-item">Profile</a></li>
                     <li><a href="" class="dropdown-item">Settings</a></li>

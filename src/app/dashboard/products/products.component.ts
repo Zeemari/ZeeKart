@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DashboardService } from 'src/app/shared/api/dashboard/dashboard.service';
 import { UtilService } from 'src/app/shared/util/util.service';
-import { ProductsModel } from './products.model';
+
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -12,48 +13,25 @@ import { ProductsModel } from './products.model';
 export class ProductsComponent implements OnInit {
   myForm: FormGroup | any;
 
-  // To enable ngModel
-  productData: any[] = [];
-  product: any = {
-    name: '',
-    price: '',
-    description: '',
-  };
-
-  // Created a Product model file
-  productsModelObj: ProductsModel = new ProductsModel();
-  // productData!: any;
-  fileToUpload: File = null;
+  imageUrl: any = '';
   user: any;
+  products: any[] = [];
 
-  // Add product & delete product modal
+  allProducts: Array<any> = [];
+
+  public productData = this.products;
+
+  // Add product & update product modal
   showAdd!: boolean;
   showUpdate!: boolean;
 
   constructor(
     private fb: FormBuilder,
     private api: DashboardService,
-    private _util: UtilService
+    private _util: UtilService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
-
-  // Form builder/Reactive Forms Section
-
-  ngOnInit() {
-    this.getUser();
-    this.myForm = this.fb.group({
-      name: ['', Validators.required],
-      price: ['', [Validators.required]],
-      description: ['', [Validators.required, Validators.maxLength(200)]],
-      image: ['', [Validators.required]],
-    });
-    this.getAllProducts();
-  }
-
-  // Getting user details Section
-  getUser() {
-    const userInformation = this._util.readFromLocalStorage('user');
-    userInformation ? (this.user = JSON.parse(userInformation)) : '';
-  }
 
   clickAddProduct() {
     this.myForm.reset();
@@ -61,92 +39,187 @@ export class ProductsComponent implements OnInit {
     this.showUpdate = false;
   }
 
-  // Add Product section
+  // Form builder/Reactive Forms Section
 
-  addProduct(data: any) {
-    // Used Local Storage
-    this.productData.push(this.product);
-    localStorage.setItem('productList', JSON.stringify(this.productData));
+  ngOnInit(): void {
+    this.UpdateProducts();
+    this.getProducts();
 
-    // My Code using endpoints
-
-    // this.productsModelObj.name = this.myForm.value.name;
-    // this.productsModelObj.price = this.myForm.value.price;
-    // this.productsModelObj.description = this.myForm.value.description;
-
-    // this.api.postProduct(this.productsModelObj).subscribe(
-    //   (res) => {
-    //     let listItem = localStorage.getItem('addList');
-    //     if (listItem) {
-    //       let addList: Array<any> = JSON.parse(listItem);
-    //       addList.push(ProductsModel);
-    //       localStorage.setItem('addList', JSON.stringify(addList));
-
-    //       const userObject = JSON.stringify(this.productsModelObj);
-    //       localStorage.setItem('addList', userObject);
-    //     } else {
-    //       localStorage.setItem('addList', JSON.stringify([ProductsModel]));
-    //     }
-    //     this.myForm.reset();
-    //     this.getAllProducts();
-
-    //     alert('Product Added Successfully');
-    //   },
-    //   (err) => {
-    //     alert('something went wrong');
-    //   }
-    // );
-  }
-
-  // Get all products section
-  getAllProducts() {
-    this.api.getProduct().subscribe((res) => {
-      this.productData = res;
+    this.myForm = this.fb.group({
+      name: ['', Validators.required],
+      price: ['', [Validators.required]],
+      description: ['', [Validators.required, Validators.minLength(30)]],
+      image: [''],
     });
   }
 
-  // Delete all products section
-  deleteProducts(row: any) {
-    this.api.deleteProduct(row.id).subscribe((res) => {
-      alert('product deleted');
-      this.getAllProducts();
+  getProducts() {
+    this.api.getProduct().subscribe((res: any) => {
+      this.allProducts = res.data.reverse();
     });
   }
+
+  currentList: string | null = localStorage.getItem('productList');
+
+  UpdateProducts(): void {
+    this.api.getProduct().subscribe(
+      (_res) => {
+        setInterval(() => {
+          let currentList = localStorage.getItem('productList');
+          if (currentList) {
+            let productList: Array<any> = JSON.parse(currentList);
+            this.productData = [...this.products, ...productList].reverse();
+          } else {
+            this.productData = this.products;
+          }
+        }, 2000);
+      },
+      (_err: any) => {
+        console.log();
+        this.router.navigate(['dashboard']);
+        console.log(_err);
+      }
+    );
+    try {
+      this.productData = this.products;
+    } catch {
+      alert('error');
+    }
+  }
+
+  addProduct() {
+    // this.showAdd = false;
+    // this.showUpdate = true;
+
+    let newListItem = {
+      image: '',
+      name: this.myForm.value.name,
+      description: this.myForm.value.description,
+      price: this.myForm.value.price,
+    };
+
+    const productData = new FormData();
+    productData.append('name', `${this.myForm.value.name}`);
+    productData.append('image', this.imageUrl);
+    productData.append('description', `${this.myForm.value.description}`);
+    productData.append('price', `${this.myForm.value.price}`);
+
+    this.api.Createproduct(productData).subscribe(
+      (res) => {
+        let currentList = localStorage.getItem('productList');
+        if (currentList) {
+          let productList: Array<any> = JSON.parse(currentList);
+          productList.push(newListItem);
+          localStorage.setItem('productList', JSON.stringify(productList));
+
+          const userObject = JSON.stringify(productData);
+          localStorage.setItem('productlist', userObject);
+        } else {
+          localStorage.setItem('productList', JSON.stringify([newListItem]));
+        }
+        alert('Add Product Successfully');
+      },
+      (err: any) => {
+        alert('something went wrong');
+      }
+    );
+  }
+
+  updateProduct() {
+    let newListItem = {
+      image: '',
+      name: this.myForm.value.name,
+      description: this.myForm.value.description,
+      price: this.myForm.value.price,
+    };
+
+    const productData = new FormData();
+    productData.append('name', `${this.myForm.value.name}`);
+    productData.append('image', this.imageUrl);
+    productData.append('description', `${this.myForm.value.description}`);
+    productData.append('price', `${this.myForm.value.price}`);
+
+    this.api.updateProduct(productData).subscribe(
+      (res) => {
+        let currentList = localStorage.getItem('productList');
+        if (currentList) {
+          let productList: Array<any> = JSON.parse(currentList);
+          productList.push(newListItem);
+          localStorage.setItem('productList', JSON.stringify(productList));
+
+          const userObject = JSON.stringify(productData);
+          localStorage.setItem('productlist', userObject);
+        } else {
+          localStorage.setItem('productList', JSON.stringify([newListItem]));
+        }
+        alert('Add Product Successfully');
+      },
+      (err: any) => {
+        alert('something went wrong');
+      }
+    );
+  }
+
+  // addProduct() {
+  //   let newListItem = {
+  //     image: this.myForm.value.image,
+  //     name: this.myForm.value.name,
+  //     description: this.myForm.value.description,
+  //     price: this.myForm.value.price,
+  //   };
+
+  //   const productData = new FormData();
+  //   productData.append('name', `${this.myForm.value.name}`);
+  //   productData.append('image', `${this.myForm.value.image}`);
+  //   productData.append('description', `${this.myForm.value.description}`);
+  //   productData.append('price', `${this.myForm.value.price}`);
+
+  //   this.api.createProduct(productData).subscribe(
+  //     (res) => {
+  //       let currentList = localStorage.getItem('productList');
+  //       if (currentList) {
+  //         let productList: Array<any> = JSON.parse(currentList);
+  //         productList.push(newListItem);
+  //         localStorage.setItem('productList', JSON.stringify(productList));
+
+  //         const userObject = JSON.stringify(productData);
+  //         localStorage.setItem('productlist', userObject);
+  //       } else {
+  //         localStorage.setItem('productList', JSON.stringify([newListItem]));
+  //       }
+  //       alert('Add Product Successfully');
+  //     },
+  //     (err: any) => {
+  //       console.log(err);
+  //     }
+  //   );
+  // }
 
   // Edit all products section
   onEdit(row: any) {
     this.showAdd = false;
     this.showUpdate = true;
-    this.productsModelObj.id = row.id;
+    this.products = row.id;
     this.myForm.controls['name'].setValue(row.name);
     this.myForm.controls['price'].setValue(row.price);
     this.myForm.controls['description'].setValue(row.description);
     this.myForm.controls['image'].setValue(row.image);
   }
 
-  // Update all products Section
-  updateProducts() {
-    this.productsModelObj.name = this.myForm.value.name;
-    this.productsModelObj.price = this.myForm.value.price;
-    this.productsModelObj.description = this.myForm.value.description;
-
-    this.api
-      .updateProduct(this.productsModelObj, this.productsModelObj.id)
-      .subscribe((res) => {
-        // alert('updated successfully');
-        this.getAllProducts();
-      });
+  onDelete(id: number) {
+    if (confirm('Are you sure?')) {
+      this.api.deleteProduct(+id).subscribe(
+        (res) => {
+          this.getProducts = res.id;
+          console.log(res);
+          this.ngOnInit();
+        }
+        // (error) => (this.error = error)
+      );
+    }
   }
 
-  // Image Upload Section
-  imageUrl = '../../../assets/images/876.jpg';
-
-  onselectFile(e) {
-    this.fileToUpload = e.item(0);
-    var reader = new FileReader();
-    reader.onload = (event: any) => {
-      this.imageUrl = event.target.result;
-    };
-    reader.readAsDataURL(this.fileToUpload);
+  getImagePath(event: any) {
+    this.imageUrl = event.target.files[0];
   }
 }

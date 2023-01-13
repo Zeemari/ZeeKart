@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         this._util.saveToLocalStorage('token', token);
         this._util.saveToLocalStorage('user', userObject);
 
-        alert('User Logged Successfully');
+        alert('User Logged in Successfully');
         this.loginForm.reset();
         this._router.navigate(['/dashboard']);
       },

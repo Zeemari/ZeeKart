@@ -1,51 +1,42 @@
-<!-- The Products Section -->
-
 <section class="p-1 bg-light">
   <div class="row">
     <div class="container">
       <div class="row justify-content-center p-2">
-        <!-- NgFor Section -->
         <div
-          class="col-sm-12 col-md-12 col-lg-4 mb-5 d-flex align-items-center justify-content-center"
-          *ngFor="let row of productData"
+          class="col-sm-12 col-md-6 col-lg-3 mb-5 d-flex align-items-center justify-content-center"
+          *ngFor="let row of allProducts"
         >
-          <div class="card border-light">
-            <img [src]="imageUrl" alt="" class="card-img-top" />
-            <div class="card-body">
-              <h5 class="card-title fs-5">{{ row.name }}</h5>
-              <p class="card-text fs-6 fw-bold">
-                {{ row.price | currency : "USD" }}
-              </p>
-              <p class="card-text fs-6">{{ row.description }}</p>
+          <div class="col-12 d-flex align-items-center justify-content-center">
+            <div class="card border-light" style="width: 20rem">
+              <div class="image">
+                <img [src]="row.image" alt="" class="card-img height" />
+              </div>
 
-              <!-- Edit,Update and Delete Section -->
-              <div class="d-flex align-items-center justify-content-between">
-                <div class="col-6">
-                  <a
-                    [routerLink]="['/dashboard/products/product-details']"
-                    class="btn btn-primary p-2 fs-6"
-                    >Product details</a
+              <div class="card-body">
+                <h5 class="card-title fs-5 Mulish fw-bold">{{ row.name }}</h5>
+                <p class="card-text fs-6 fw-bold Mulish">
+                  {{ row.price | currency : "USD" }}
+                </p>
+                <p class="card-text fs-6 Mulish">{{ row.description }}</p>
+
+                <!-- <div class="d-flex align-items-center justify-content-end">
+                  <div
+                    class="col-6 d-flex align-items-center justify-content-end"
                   >
-                </div>
-                <div
-                  class="col-6 d-flex align-items-center justify-content-end"
-                >
-                  <a
-                    class="nav-link"
-                    (click)="onEdit(row)"
-                    type="button"
-                    data-bs-toggle="modal"
-                    data-bs-target="#myModal"
-                    ><i class="fa-solid fa-pen-to-square me-3"></i
-                  ></a>
+                    <a
+                      class="nav-link"
+                      type="button"
+                      (click)="onEdit(row)"
+                      data-bs-toggle="modal"
+                      data-bs-target="#myModal"
+                      ><i class="fa-solid fa-pen-to-square me-3"></i
+                    ></a>
 
-                  <a
-                    class="nav-link"
-                    type="button"
-                    (click)="deleteProducts(row)"
-                    ><i class="fa-sharp fa-solid fa-trash"></i>
-                  </a>
-                </div>
+                    <a class="nav-link" type="button"
+                      ><i class="fa-sharp fa-solid fa-trash"></i>
+                    </a>
+                  </div>
+                </div> -->
               </div>
             </div>
           </div>

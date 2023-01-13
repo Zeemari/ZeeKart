@@ -11,9 +11,11 @@ import { AllProductsModel } from './all-products.model';
 export class AllProductsComponent implements OnInit {
   myForm: FormGroup | any;
 
+  allProducts: Array<any> = [];
+
   // Created a All Product model file
-  productsModelObj: AllProductsModel = new AllProductsModel();
-  productData!: any;
+  // productsModelObj: AllProductsModel = new AllProductsModel();
+  // productData!: any;
 
   constructor(private fb: FormBuilder, private api: DashboardService) {}
 
@@ -24,32 +26,38 @@ export class AllProductsComponent implements OnInit {
       description: ['', [Validators.required, Validators.maxLength(200)]],
       image: ['', [Validators.required]],
     });
-    this.getAllProducts();
+    this.getProducts();
+  }
+
+  getProducts() {
+    this.api.getProduct().subscribe((res: any) => {
+      this.allProducts = res.data.reverse();
+    });
   }
 
   // Get all products section
-  getAllProducts() {
-    this.api.getProduct().subscribe((res) => {
-      this.productData = res;
-    });
-  }
+  // getAllProducts() {
+  // this.api.getProduct().subscribe((res) => {
+  //   this.productData = res;
+  // });
+  // }
 
   // Delete all products section
-  deleteProducts(row: any) {
-    this.api.deleteProduct(row.id).subscribe((res) => {
-      alert('product deleted');
-      this.getAllProducts();
-    });
-  }
+  // deleteProducts(row: any) {
+  //   this.api.deleteProduct(row.id).subscribe((res) => {
+  //     alert('product deleted');
+  //     this.getAllProducts();
+  //   });
+  // }
 
   // Edit all products section
-  onEdit(row: any) {
-    this.productsModelObj.id = row.id;
-    this.myForm.controls['name'].setValue(row.name);
-    this.myForm.controls['price'].setValue(row.price);
-    this.myForm.controls['description'].setValue(row.description);
-    this.myForm.controls['image'].setValue(row.image);
-  }
+  // onEdit(row: any) {
+  //   this.productsModelObj.id = row.id;
+  //   this.myForm.controls['name'].setValue(row.name);
+  //   this.myForm.controls['price'].setValue(row.price);
+  //   this.myForm.controls['description'].setValue(row.description);
+  //   this.myForm.controls['image'].setValue(row.image);
+  // }
 
-  imageUrl = '../../../assets/images/876.jpg';
+  // imageUrl = '../../../assets/images/876.jpg';
 }

@@ -27,6 +27,16 @@
   background: #e8eeeb !important;
 }
 
+.sign-h {
+  height: 100vh;
+}
+
 .text-warning {
   color: #ff0000 !important;
+}
+
+@media (max-width: 768px) {
+  .sign-h {
+    height: 100vh !important;
+  }
 }
