@@ -48,10 +48,6 @@ export class DashboardService {
   }
 
   deleteProduct(id: number) {
-    return this.http.delete<any>(this._deleteProductUrl + id).pipe(
-      map((res: any) => {
-        return res;
-      })
-    );
+    return this.http.delete<any>(this._deleteProductUrl + id);
   }
 }

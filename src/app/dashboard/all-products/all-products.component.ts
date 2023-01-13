@@ -31,7 +31,7 @@ export class AllProductsComponent implements OnInit {
 
   getProducts() {
     this.api.getProduct().subscribe((res: any) => {
-      this.allProducts = res.data.reverse();
+      this.allProducts = res.data;
     });
   }
 
