@@ -19,6 +19,7 @@ import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
     BrowserAnimationsModule,
     HttpClientModule,
   ],
+  exports: [SpinnerComponent],
   providers: [
     AuthService,
     AuthGuard,

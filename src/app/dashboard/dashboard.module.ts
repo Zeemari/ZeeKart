@@ -8,15 +8,22 @@ import { AuthService } from '../shared/api/auth/auth.service';
 import { AuthGuard } from '../shared/guard/auth.guard';
 import { DashboardService } from '../shared/api/dashboard/dashboard.service';
 import { InterceptorService } from '../shared/interceptors/interceptor.service';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { LoadingInterceptor } from '../shared/interceptors/loading.interceptor';
 
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [DashboardComponent, SpinnerComponent],
   imports: [CommonModule, DashboardRoutingModule, HttpClientModule],
   providers: [
     AuthService,
     DashboardService,
     AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    },
   ],
 })
 export class DashboardModule {}
